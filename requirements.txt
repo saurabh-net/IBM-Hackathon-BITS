@@ -1,0 +1,6 @@
+bottle
+requests
+urllib3
+base36
+collection-json
+

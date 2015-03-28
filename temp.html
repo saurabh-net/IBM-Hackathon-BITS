@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Alchemy</title>
+
+<link rel="stylesheet" type="text/css" href="static/styles.css" />
+<style type="text/css">
+#list {  margin-left:500px;}
+#list ul { 
+
+list-style-image: url("static/bulletin.png") ; color:#eee; font-size:15px; }
+#list ul li { line-height:40px; }
+
+iframe {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-color: #718693;
+    border-width:0px;
+    
+}</style>
+<link rel="stylesheet" href="static/style2.css" type="text/css" media="screen">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery(window).load(function() {
+
+    $("#nav > li > a").click(function (e) { // binding onclick
+        if ($(this).parent().hasClass('selected')) {
+            $("#nav .selected div div").slideUp(100); // hiding popups
+            $("#nav .selected").removeClass("selected");
+        } else {
+            $("#nav .selected div div").slideUp(100); // hiding popups
+            $("#nav .selected").removeClass("selected");
+
+            if ($(this).next(".subs").length) {
+                $(this).parent().addClass("selected"); // display popup
+                $(this).next(".subs").children().slideDown(200);
+            }
+        }
+        e.stopPropagation();
+    }); 
+
+    $("body").click(function () { // binding onclick to body
+        $("#nav .selected div div").slideUp(100); // hiding popups
+        $("#nav .selected").removeClass("selected");
+    }); 
+
+});
+</script>
+</head>
+
+<body>
+
+<div id="page">
+
+    <h1>ALCHEMY</h1>
+    
+    <form id="searchForm" method="get" action="/">
+		<fieldset>
+        
+           	<input id="s" type="text" name="input"/>
+            
+            <input type="submit" value="Submit" id="submitButton" onclick="redirect()"/>
+            
+            <div id="searchInContainer">
+                <input type="radio" name="check" value="place1" id="place1" checked />
+                <label for="place1" style='span
+                '>New York</label>
+                
+                <input type="radio" name="check" value="place2" id="place2" />
+                <label for="place2">Banglore</label>
+
+                 <input type="radio" name="check" value="place3" id="place3" />
+                <label for="place3">Afghanistan</label>
+			</div>
+                        
+            <!--
+            <ul class="icons">
+                <li class="web" title="Web Search" data-searchType="web">Web</li>
+                <li class="images" title="Image Search" data-searchType="images">Images</li>
+                <li class="news" title="News Search" data-searchType="news">News</li>
+                <li class="videos" title="Video Search" data-searchType="video">Videos</li>
+            </ul>  -->
+            
+        </fieldset>
+    </form>
+    
+    
+
+
+<div id="resultsDiv"><div class="pageContainer">
+
+
+{{values1['query'] if defined('values1') else ''}}
+
+{{values1['sentiment'] if defined('values1') else ''}}
+
+</div>
+</div>
+<div class="example">
+    <div class="menu">
+        <span>
+            <ul id="nav">
+                
+                <li><a href="#"><img src="static/arrow.png" style="height:30px;width:30px;"></a>
+                    <div class="subs">
+                        <div>
+                            <ul>
+                                <li><h3>Expanded Sentinents</h3>
+                                    <ul>
+                                        <li><a href="#">
+                                        {{values1['var2a'] if defined('values1') else ''}}
+
+                                        </a></li>
+                                        <li><a href="#"> 
+                                        {{values1['var2b'] if defined('values1') else ''}}
+                                        </a></li>
+                                        <li><a href="#">
+                                         {{values1['var2c'] if defined('values1') else ''}}
+                                        </a></li>
+                                        <li><a href="#">
+                                         {{values1['var2d'] if defined('values1') else ''}}
+                                        </a></li>
+                                        <li><a href="#">
+                                             {{values1['var2e'] if defined('values1') else ''}}
+                                        </a></li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                
+        </span>
+    </div>
+</div>
+
+    
+<div class="loader"> <iframe src="loader.html"   style='display:block;'></iframe></div>
+</div> 
+<br><br>
+<div id="list">
+   <ul>
+      <li>Java</li>
+      <li>.NET</li>
+      <li>C++</li>
+      <li>PHP</li>
+   </ul>
+</div>
+<br>
+
+
+
+<!-- It would be great if you leave the link back to the tutorial. Thanks! -->
+<p class="credit"><a href="#">Powered by Bluemix</a></p>
+    
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="static/script.js"></script>
+<script type="text/javascript" > 
+function redirect(){
+    $('.loader').show();
+}
+
+</script>
+</body>
+</html>
